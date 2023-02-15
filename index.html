@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="imagetoolbar" content="no"/>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=480, initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<base href="http://100.126.20.133/maximo/webclient/skins/skins-20190216-0332/tivoli13/images/" target="_self"/>
+		
+		<title>Centro de inicio</title>
+		<link rel="stylesheet" type="text/css" href="http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/dojo/resources/dojo.css"/>
+		<link rel="stylesheet" type="text/css" href="http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/dojox/html/resources/ellipsis.css"/>
+		<link rel="stylesheet" type="text/css" href="http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/dijit/themes/tundra/tundra.css"/>
+		<link id="csslink1" rel="stylesheet" type="text/css" href="http://100.126.20.133/maximo/webclient/skins/skins-20190216-0332/tivoli13/css/maximo.css"/>
+		<link id="csslink2" rel="stylesheet" type="text/css" href="http://100.126.20.133/maximo/webclient/skins/hc.css"/>
+		<link rel="shortcut icon" href="http://100.126.20.133/maximo/webclient/skins/skins-20190216-0332/tivoli13/images/maximo-icon.ico"/>
+		<link rel="apple-touch-icon" href="http://100.126.20.133/maximo/webclient/skins/skins-20190216-0332/tivoli13/images/maximo-icon.png"/> 
+		<script>
+			/* preload images for speed */
+			new function() 
+			{
+				var imagePath = "";
+				var preloadImages = [
+						/* Tabs */
+						"tabs/row.gif", "tabs/sub_row.gif", "tabs/off.gif", "designer/formtabon_selected.gif", "tabs/over.gif",
+						/* Toolbar */
+						"tb_button_highlight.gif",
+						/* Menu */
+						"menus/menusub.gif",
+						/* Async */
+						"async/working.gif", "async/edited.png", "async/error.png", "async/warning.png", "async/question.png", "async/smartfill.png"];
+				
+				for(var i=0;i<preloadImages.length;i++)
+				{
+					var image = new Image();
+					image.src = imagePath + preloadImages[i];
+				}
+			}();
+		</script>
+
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/deprecated.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/constants.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/prototype.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/browser_library.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/menus.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/navsection.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/library.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/skins/skins-20190216-0332/tivoli13/css/../js/skinlibrary.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/async.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/designer.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/wfdesign.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/sessiontimer.js"></script>
+
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/dataproxy.js"></script>
+		<script type="text/javascript">
+			var highContrast = false;
+			var clientAreaId = "";
+			var SYSTEMNAVBAR = true;
+			
+			var nextGenUrl = "http://100.126.20.133/maximo-x";
+			document.title="Centro de inicio";
+			isBidiEnabled = false;
+			var APP_KEY_LABEL = "Nombre de grupo";
+			var IMAGE_PATH="";
+			var MAINDOC=document;
+			// No more hidden document, so set it to current document for backwards compatibility.
+			var HIDDENDOC=document;
+			var IFRAMEPAGE = "http://100.126.20.133/maximo/ui/maximo.jsp?uisessionid=10105&csrftoken=ihd5km3716vtgsg7jqqbqs4rle";
+			var XHRACTION = "http://100.126.20.133/maximo/ui/maximo.jsp";
+			var PORTLETACTION = "http://100.126.20.133/maximo/webclient/components/portletrenderer.jsp?uisessionid=10105&csrftoken=ihd5km3716vtgsg7jqqbqs4rle";
+            var USEFILEPROMPT = "0";
+            var VERTLABELS = "true";
+            var WFPIXELS = "80";
+			var DESIGNMODE=false;
+			var APPTARGET="startcntr";
+			var DEBUGLEVEL = 0;
+			var SCREENREADER = false;
+			var WEBREPLAY = false;
+			var FOCUSDELAY = 300;
+			var UNLOAD_WARN = "Si navega fuera de esta página, puede perder los datos que no se hayan guardado y puede que deba volver a iniciar una sesión.";
+			var SKIN = "skins/skins-20190216-0332/tivoli13/";
+			var USERLOCALE="es";
+			var MSG_BTNCLOSE = 1;
+			var MSG_BTNOK = 2;
+			var MSG_BTNCANCEL = 4;
+			var MSG_BTNYES = 8;
+			var MSG_BTNNO = 16;
+			var MSGBOX_TITLE = "Mensaje del sistema";
+			var EXCEPTION_NONE          = -1;
+			var EXCEPTION_WARNING       = 0;
+			var EXCEPTION_ERROR         = 3;
+			var EXCEPTION_YESNOCANCEL   = 2;
+			var EXCEPTION_REQUIREDFIELD = 1;
+			var EXCEPTION_INFO          = 5;
+			var REQUESTTYPE_ASYNC     = "ASYNC";
+			var REQUESTTYPE_HIGHASYNC = "HIGHASYNC";
+			var REQUESTTYPE_SYNC      = "SYNC";
+			var REQUESTTYPE_NORENDER  = "NORENDER";
+			var REQUESTTYPE_NONE      = "none";
+			var REQUESTTYPE_DEFAULT   = "default";
+			var REQUESTTYPE = "requesttype";
+			var JAVASCRIPT_BASE = "http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/";
+			var DEBUG_DOJO = false;
+			var SERVER_UPDATE_WARN="El sistema desea insertar {0} en este campo. Puede insertar el valor del sistema o continuar especificando su valor e ignorar este mensaje.";
+			var SERVER_UPDATE_BUTTON="Inserte {0}";
+			var SERVER_CLEAR_WARN="El sistema desea borrar este campo. Puede permitir que el sistema borre el campo o continuar especificando su valor e ignorar este mensaje.";
+			var SERVER_CLEAR_BUTTON="Borrar campo";
+			var CONTAINER_ERROR_ICONS = {"smartfill":{"event":"errorfocus","tooltip":"Contiene errores"},"error":{"event":"errorfocus","tooltip":"Contiene errores"},"question":{"event":"errorfocus","tooltip":"Contiene errores"},"warning":{"event":"errorfocus","tooltip":"Contiene avisos"}};
+			var MAX_LENGTH="El valor especificado {0} supera la longitud de campo máxima {1}. Introduzca un valor que encaje en la longitud de este atributo.";
+			var menus;
+			var topLevelMenus = new Array();
+			var saveUnlocked = true;
+			var tpaeConfig = {
+				extendedTooltipShowDelay: 1000,
+				extendedTooltipHideDelay: 500,
+				readOnlyMsg: "El campo {0} es de sólo lectura. No puede editarse este campo.",
+				hotKeyLabel: "Tecla de acceso rápido: {0}",
+				tabBreadCrumbs: true,
+				clientDataValidation: true,
+				validationOn: true,
+				menuHideDelay : 750,
+				clientEventQueue: {
+					timeout: 5000,
+					threshold: 1
+				}
+			};
+			
+			queueManager = new QueueManager({sessionid:decodeURIComponent("10105"), designmode:false, threshold:tpaeConfig.clientEventQueue.threshold, timeout:tpaeConfig.clientEventQueue.timeout, csrftoken:'ihd5km3716vtgsg7jqqbqs4rle'});
+			/* 
+			*	Do images last so that special bindings done in inputs do not overwrite related field events for hover images
+			* 	May wish to change all bindings in bindEvents to use dojo.connect in the future
+			*/
+			var eventBindObjects = new Array("a","div","input","button","select","span","textarea","fieldset","img","td");
+			var LEAVE_TIMEOUT = 0;
+
+			var PRODUCTNAME = "Maximo - Centro de inicio";
+			SESSION_TIMEOUT = 900;//in seconds
+			timeUntilLogout=SESSION_TIMEOUT;//in seconds
+			SESSION_WARNTIMEOUT = 120;//in seconds.
+			SESSIONRESETTHRESHHOLD = SESSION_TIMEOUT/3;//in seconds.
+			var WARNTEXTMINS = "El tiempo de espera de la sesión se agotará dentro de {0} minutos.";
+			var WARNTEXTSECS = "El tiempo de espera de la sesión se agotará dentro de {0} segundos.";
+			var WARNLOSTCONNECTION =  "Se ha perdido la conexión con el servidor.  Cuando se restablezca la conexión, se efectuará un intento de reenvío de cualquier evento fallido.";
+			var WARNCONNECTIONRESTORED =  "Se ha restaurado esta conexión al servidor y todos los eventos se han enviado satisfactoriamente al servidor.";
+			var CONNECTIONRESTOREDBTNTEXT =  "Aceptar";
+			var WARNLOSTURL  = "http://100.126.20.133/maximo/ui/1675284449969?checkhiddenandconnection=true&uisessionid=10105&csrftoken=ihd5km3716vtgsg7jqqbqs4rle";
+			var SHOWLOSTCONNECTIONWARNINGONLY = false;
+			var CONNECTIONREDRAWURL  = "http://100.126.20.133/maximo/ui/maximo.jsp?event=render&targetid=startcntr&value=rerender&conectionwarningclosed=true&uisessionid=10105&csrftoken=ihd5km3716vtgsg7jqqbqs4rle";
+			CONNECTIONWARNINGINTERVAL = 15000;//in milliseconds.
+			CONNECTIONRECHECKINTERVAL = 2000;//in milliseconds.
+			var LEAVETOOLTIPOPEN = false;
+			var ASYNCTOOLTIPWAITEBEFOREOPEN = 2000;//in milliseconds.
+			var ASYNCTOOLTIPUSERVALUE =  "Ha especificado:";
+			var MAXRCURL = "http://100.126.20.133/maximo";
+			var TIMEOUTRESETURL = "http://100.126.20.133/maximo/servlet/sessionservlet?resetsession=true&uisessionid=10105";
+			var LOGOUTURL = "http://100.126.20.133/maximo/webclient/login/logout.jsp?uisessionid=10105&csrftoken=ihd5km3716vtgsg7jqqbqs4rle";
+			var PAGESEQNUM = "1";
+			var UISESSIONID = decodeURIComponent("10105");
+			var CSRFTOKEN = "ihd5km3716vtgsg7jqqbqs4rle";
+			var loadMethods = new Array;
+			function addLoadMethod(method)
+			{
+				loadMethods.push(method);
+			}
+			var USERNAME="ECM9491G";
+			var USERLANG="ES";
+			var MOBILE=false;
+			var MOBILEAGENT = false; 
+			var MOBILEDATEPICKER=false;
+			var OUTOFSEQERRORMSG="Se ha producido un problema de comunicación con el servidor, que tendrá como resultado la pérdida de algunos de los cambios. Debe volver a cargar la aplicación y especificar la información.";
+			var OUTOFSEQERRORRELOADBUTTON="Recargar";
+			var CONNECTIONERRORMSG="El navegador no puede conectarse con el servidor. Vuelva a cargar la aplicación e inténtelo de nuevo. Si la recarga no resuelve el problema, la razón podría ser que está desconectado de la red o el servidor podría estar apagado. Código de error: {0}";
+			var UNKNOWSERVERERRORMSG="El servidor ha encontrado un error desconocido. Vuelva a cargar la aplicación e inténtelo de nuevo. Si el problema persiste, póngase en contacto con el administrador del sistema.<br/><br/>Código de error: {0}";
+			var PAGEID="mainrec-pg";
+			var clientDate = new Date().getTime();
+			var clientTimer = true;
+			var serverTZOffset = -18000000;
+			var clientTZOffset = new Date().getTimezoneOffset() * 60 * 1000;
+			var tzAdjustment = serverTZOffset + clientTZOffset;
+			var systemDate = 1675284449969 + tzAdjustment;
+			var PROXYLOGINSTRINGCHECK = "pkmslogin";
+		var warnExit = true
+		addLoadMethod("hideURLbar();");
+		addLoadMethod("stopDocScroll();");
+		var INVALIDFILENAMEMSG="El archivo  no es válido o no está en el directorio seleccionado. Proporcione un nombre de archivo válido e inténtelo de nuevo.";
+			var TABLEDOMAINLIST = [];
+		</script>
+		<script type="text/javascript">
+			var djConfig =
+			{
+				isDebug: false,
+				modulePaths: {
+							'com.ibm.mm':'/enabler/js/com/ibm/mm',
+							'com.ibm.mashups':'/enabler/js/com/ibm/mm',
+							'com.ibm.widgets':'/enabler/js/com/ibm/widgets'},
+				parseOnLoad: false,
+				locale: 'es',
+				extraLocale: ['es']
+			};
+			var DOJOLOCALE="es";
+			var DOJOLOCALEFORDATEFORMAT = "es-co";
+		</script>
+
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/dojo/dojo.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/dojo-20190216-0332/dojo/window.js"></script>
+		<script type="text/javascript" src="http://100.126.20.133/maximo/webclient/javascript/tpae-20190216-0332/dojo_library.js"></script>
+		<script>
+			var MAXRECENTAPPS = 8;
+			var RECENTAPPTEXT = "Mis aplicaciones recientes";
+			var tenantID = "";
+			
+			var hebrew=false;
+			var islamic=false;
+			dojo.require('layers.mbs.popuplayer');
+			dojo.addOnLoad(function() {
+				if(dojo.isFF >= 4 || dojo.isFF==0){ //problem with 3.6 and dojox.html.ellipsis
+					dojo.require("dojox.html.ellipsis");
+				}
+				dojo.require("ibm.tivoli.mbs.html");
+				dojo.require("dojox.html.entities");
+				dojo.require("dojo.number");
+				dojo.require('dijit._base.popup'); 
+				dojo.require('dijit.Tooltip');
+				dojo.require('dojo.dnd.Moveable');
+				dojo.require("dojo.dnd.move");
+				dojo.require("dojo.fx");
+				// Workaround to set the starting z index for dojo popups and tooltips above the maximo dialog.
+				dojo.addOnLoad(dojohelper.fixPopupZIndex);
+			});
+		</script>
+			<style type="text/css">html { display:none }</style>
+			<script>
+				if (self == top) {
+					document.documentElement.style.display = 'block';
+				} else {
+					top.location = self.location;
+				}
+			</script>
+	</head>
+	<body   scroll='no'  class="tundra scBody"  style="overflow:hidden;cursor:wait;padding:0px;margin:0px;height:100%;width:100%" aria-labelledby="titlebar-tb_appname"
+		onkeydown="bodyEvent(event)" onclick="bodyEvent(event)" >
+		<form role="main" id="psuedoForm" aria-label="formulario principal" role="presentation" 
+			action="http://100.126.20.133/maximo/webclient/maximo.jsp" method="post" onsubmit="return false" 
+			onkeypress="if(event.keyCode=='13' && getSourceElement(event).tagName!='TEXTAREA' && getSourceElement(event).tagName!='A'){if(event.preventDefault){ event.preventDefault(); }else{ event.returnValue = false;}}">
+	 	<script>
+			if(browserSupportsLocalStorage()) {
+				var dataString =  localStorage.getItem("tpaeInspectorData");
+				if(dataString && dataString.length>0){
+					var data = JSON.parse(dataString);
+					if(data && data.inspectorURL){ //was run here
+						require([data.inspectorURL, "dojo/domReady!"], function(inspector){
+							window.setTimeout(function(){
+								new inspector().startup(/*headless*/false, data.inspectorURL);
+							}, 1000);
+						});
+					}
+				}
+			}
+		</script>
+		
+		<table id="menuholder" style="position:absolute;z-index:50000;top:0px;left:0px;display:inline;" role="presentation"><tr><td id="menuholdertd" width="100%"></td></tr></table>
+		<label for="tempselect" aria-hidden="true" style="display:none">TEMPSELECT</label><input type="text" id="tempselect" style="display:none" aria-hidden="true" style="position:absolute;top:-1000px"/>
+		<table id="mainrec-pg" class="  " summary="" width="100%" height="100%" style="vertical-align:top;" role="presentation">
+
+				<tr id="mainrec-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="mainrec-co3_0" role='presentation'      nowrap="nowrap"      style=" height:100%;vertical-align:top;"><table role="presentation" id="mainrec-gr" cellspacing='0' width="100%"  class="  " summary="" style="">				<tr id="mainrec-co4_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="mainrec-co6_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;"><table role="presentation" id="mainrec-gr2" cellspacing='0' width="100%"  class="  " summary="" style="">				<tr id="mainrec-co7_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="mainrec-co8_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;"><table role="presentation" control="true" id="mainrec-chld"   width="100%"  class="  " summary=""  style="width:100%;;;vertical-align:top">					<tr>
+						<td>
+							<div id="m4cd0065c-co_0_div" style="width:100%;height:100%;overflow-x:auto">
+								<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+
+				<tr id="m4cd0065c-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m4cd0065c-co3_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;"><table role="presentation" control="true" id="m4cd0065c-chld"   width="100%" height="100%" class="  " summary=""  style="width:100%;height:100%;;vertical-align:top">				<tr id="titlebar-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+
+	<td width="100%" align="left" class="titlebarback">
+		<table width="100%" border="0" style="height: 40px" class="bgnb   " role="banner">
+			<tr>
+				<td style="vertical-align:top;white-space: nowrap;">
+					<table cellspacing="0" cellpadding="0" role="presentation" style="height: 100%;">
+						<tr>
+							
+							<td style="white-space: nowrap">
+							
+								<button type="button" id="titlebar-tb_homeButton" onkeypress="if(hasKeyCode(event, 'KEYCODE_ENTER')){setClickPosition(this);this.click();}" onclick="setClickPosition(this);sendEvent('changeapp','startcntr','startcntr')" title="Centro de inicio" alt="Centro de inicio" aria-label="Centro de inicio" onmouseout="this.className='homebutton';" onmouseover="this.className='homebutton homebuttonhover'" onblur="this.className='homebutton';" onfocus="this.className='homebutton homebuttonhover'" class="homebutton" >
+                                    <img id="homebutton_image" src="ac_ban_home.png" style="display: inline; margin: 0px -5px 0px -5px;" alt="Ir a"/>
+                                </button>
+                                <button type="button" id="titlebar-tb_gotoButton" onkeypress="if(hasKeyCode(event, 'KEYCODE_ENTER')){setClickPosition(this);this.click();}" onclick="setClickPosition(this);sendEvent('showmenu','titlebar-tb_gotoButton','goto')" class="gotobutton" onmouseout="this.className='gotobutton';" onmouseover="this.className='gotobutton gotobuttonhover'" onblur="this.className='gotobutton';" onfocus="this.className='gotobutton gotobuttonhover'" title="Ir a" alt="Ir a" aria-label="Ir a" >
+                                    <img id="gotobutton_image" src="ac_ban_goto.png" style="display: inline; margin: 0px -5px 0px -5px;" alt="Ir a"/>
+                                </button><img aria-hidden="true" style="margin:0px;vertical-align: bottom" src="ac_ban_divider.png" alt=""/>
+							
+							</td>
+							<td style="vertical-align:middle;white-space: nowrap;">
+								<span id="titlebar-tb_appname" class="homeButtontxtappname">&nbsp;
+									Bienvenido, Camilo Andres Felipe Castro Varon
+								</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+		
+				<td style="vertical-align:bottom;text-align:left">
+					<table id="titlebar_error_table" class="umtable" border="0" cellspacing="0" cellpadding="0" style="text-align:left" role="presentation">
+						<tr>
+							<td><img id="titlebar_error_image" src="information.gif"  style="visibility:hidden" alt=""/></td>
+							<td id="titlebar_error" role="alert" class="text um" style="white-space: nowrap">&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+		
+			
+				<td class="titlebarlinks" align="right" style="text-align:right">
+					<table role="presentation" align="right" style="height: 100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>
+								<span id="titlebar-tb_username" class="homeButtontxtappname userfullname" style="display:none">Camilo Andres Felipe Castro Varon</span>
+								
+							</td>
+						<td id="titlebar_bulletinboardlink_3-co_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">
+
+<span id="titlebar_bulletinboardlink_3-lbshowbboard" align='left' ctype="label"    tabindex="0"      targetid="titlebar_bulletinboardlink_3-lbshowbboard"  mxevent="click" accesskey='B' class="text powerwhite   anchor" style="display:block;cursor:pointer;" title="Boletines: &#040;0&#041;  ALT+B"><img id='titlebar_bulletinboardlink_3-lbshowbboard_image' src='btn_bboard.gif' class='pwimg' border='0'  style='vertical-align:top;margin:0px;margin-left:3px;margin-right:3px;' alt='Boletines: &#040;0&#041;  ALT+B'/><span><span></span><span class='text hl hlak'>B</span><span>oletines: (0) </span></span></span>
+<div id="titlebar_bulletinboardlink_3-count" class="bulletinCount" title="0">0</div>
+</td>
+
+
+
+
+
+
+	
+
+	
+
+	<script type="text/javascript">
+	
+		dojo.require("com.ibm.ism.pmtco.livechat");
+				
+	
+		
+		com.ibm.ism.pmtco.livechat.popupBlockedMsg = 'CTGRD5235E -  La ventana de conversación se ha bloqueado; inhabilite el bloqueo de ventanas emergentes del navegador.';
+		com.ibm.ism.pmtco.livechat.okLabel = 'Aceptar';
+				
+	
+
+	</script>
+
+	
+
+				<td id="titlebar_hyperlink_6-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="titlebar_hyperlink_6-lbshowmenu_reportsmenu" align='left' ctype="label"    tabindex="0"    ev="reportsmenu"  targetid="titlebar_hyperlink_6-lbshowmenu_reportsmenu"  mxevent="click" accesskey='r' class="text powerwhite   anchor" style="display:block;cursor:pointer;" title="Informes ALT+R"><img id='titlebar_hyperlink_6-lbshowmenu_reportsmenu_image' src='btn_reporting.gif' class='pwimg' border='0'  style='vertical-align:top;margin:0px;margin-left:3px;margin-right:3px;' alt='Informes ALT+R'/><span><span>Info</span><span class='text hl hlak'>r</span><span>mes</span></span></span>
+</td>
+				<td id="titlebar_hyperlink_8-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="titlebar_hyperlink_8-lbshowmenu_profile" align='left' ctype="label"    tabindex="0"    ev="profile"  targetid="titlebar_hyperlink_8-lbshowmenu_profile"  mxevent="click" accesskey='P' class="text powerwhite   anchor" style="display:block;cursor:pointer;" title="Perfil ALT+P"><img id='titlebar_hyperlink_8-lbshowmenu_profile_image' src='btn_profile.gif' class='pwimg' border='0'  style='vertical-align:top;margin:0px;margin-left:3px;margin-right:3px;' alt='Perfil ALT+P'/><span><span></span><span class='text hl hlak'>P</span><span>erfil</span></span></span>
+</td>
+				<td id="titlebar_hyperlink_9-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="titlebar_hyperlink_9-lbsignout" align='left' ctype="label"    tabindex="0"      targetid="titlebar_hyperlink_9-lbsignout"  mxevent="click" accesskey='S' class="text powerwhite   anchor" style="display:block;cursor:pointer;" title="Salir ALT+S"><img id='titlebar_hyperlink_9-lbsignout_image' src='btn_signout.gif' class='pwimg' border='0'  style='vertical-align:top;margin:0px;margin-left:3px;margin-right:3px;' alt='Salir ALT+S'/><span><span></span><span class='text hl hlak'>S</span><span>alir</span></span></span>
+</td>
+				<td id="titlebar_hyperlink_10-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="titlebar_hyperlink_10-lbshowmenu_help" align='left' ctype="label"    tabindex="0"    ev="help"  targetid="titlebar_hyperlink_10-lbshowmenu_help"  mxevent="click" accesskey='H' class="text powerwhite   anchor" style="display:block;cursor:pointer;" title="Ayuda ALT+H"><img id='titlebar_hyperlink_10-lbshowmenu_help_image' src='btn_help.gif' class='pwimg' border='0'  style='vertical-align:top;margin:0px;margin-left:3px;margin-right:3px;' alt='Ayuda ALT+H'/><span>Ayuda</span></span>
+</td>
+
+						</tr>
+					</table>
+				</td>
+				<td class="titlelogo"><img src="ibm_logo_grey.png" alt="" style="display:inline"/></td>
+			</tr>
+			<tr>
+				<td class="titlebarbottom" colspan="20"></td>
+			</tr>
+        </table>
+        <script>
+        
+				addLoadMethod("addHotKey('ALT+C', 'titlebar-tb_homeButton', 'click');");
+        	
+        		addLoadMethod("addHotKey('ALT+G','titlebar-tb_gotoButton', 'click');");
+        	
+       	</script>
+	</td>
+				</tr>
+</table>
+</td>
+				</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<script>
+						var headerId = "m4cd0065c-co_0";
+						var headerScrollDivId = "m4cd0065c-co_0_div";
+					</script>
+				<tr id="mbd5bb736-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="mbd5bb736-co3_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">	<div id="mbd5bb736-ca" > 
+<table role="presentation" control="true" id="mbd5bb736-chld"   width="100%"  class="  " summary=""  style="width:100%;;;vertical-align:top">
+		<tr>
+			<td id="GotoOnlyNav-so"  control="true" style="vertical-align:top;">
+	
+		<div id="GotoOnlyNav-so_compHolder" aria-live="polite"  style="padding:0px;margin:0px;vertical-align:top;height: 100%;display:"  >
+		
+			<table id="GotoOnlyNav-so_inner" role="presentation"  cellspacing="0" class="so sysNav  " cellpadding="0" height="100%" width="100%"   style="vertical-align:top;" ><tr id="GotoOnlyNav-so_1"  style="vertical-align:top;display:;" > 
+	<td id="GotoOnlyNav-se" aria-live="polite"      style="padding: 0px 5px;display:;white-space:nowrap;padding-bottom: 2px;" class="section   " valign="top"  ><table role="presentation" control="true" id="GotoOnlyNav-chld"   width="100%"  class="tdtblw  " summary=""  style="width:100%;;;vertical-align:top">				<tr id="m2e6f88ff-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+
+		<td id="mc4e699a7-sc" aria-live="polite"  style="width:50%;display:;;padding:0px 2px;vertical-align: top" sc="true"  height="100%" class="sectioncol ">
+			<div id="mc4e699a7-sc_div" >
+			
+<table role="presentation" control="true" id="mc4e699a7-chld"   width="100%" height="100%" class="  " summary=""  style="width:100%;height:100%;;vertical-align:top">				<tr id="m9bc09af3-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m9bc09af3-co2_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">
+	<script type="text/javascript">
+		var m9bc09af3_ncnavSections = {};
+		var m9bc09af3_ncnavSectionsOrder = new Array();
+	</script>
+	
+	<div class="navContainer">
+		<div navSearch="true" id="m9bc09af3_nc_search" class="dojoxEllipsis" style="padding:5px;border-bottom: 1px solid #D1D1D1"><input id="nav_search_fld" ctype="navsearch" navContainerId="m9bc09af3_nc" onfocus="setCurrentfocusFromId(event, this.id)" type="text" class="fld text tt queryField menuSearch" placeholder="Buscar elemento de navegación" promptValue="Buscar elemento de navegación" aria-label="Buscar elemento de navegación" style="width: 100%; margin-left: 0px;"/></div>
+		<div id="m9bc09af3_nc" state="open"   cellspacing="0" collapsible="true" style="overflow: hidden;vertical-align:top;border-spacing: collapse;width:-10px" pagenav="true">
+		
+		<div id="m7f8f3e49_ns" class="navSection" role="navigation" aria-labelledby="m7f8f3e49_ns_label"  containerId="m9bc09af3_nc">
+			<div class="navHeadOuter">
+			<div id="m7f8f3e49_ns_head" title="Ir a aplicaciones" role="presentation" style="width:100%" class="navHead" onkeyup="navHeadingKey(event,'m7f8f3e49_ns')">
+					<div style="display:inline;white-space: nowrap">
+						<table role="presentation">
+							<tr>
+								<td>
+									<div role="heading" tabindex="0" ondblclick="toggleSectionState('m7f8f3e49_ns');hideAllMenusNF();stopBubble(event);" id="m7f8f3e49_ns_label" class="navTitle dojoxEllipsis" style="user-select: none;-moz-user-select: none;"><img src='tasknav/applications_section.png' style='margin: 3px;' alt=''/>Ir a aplicaciones</div>
+								</td>
+								<td>
+							
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+	
+			<div id="m7f8f3e49_ns_content" style="display:;" class="navContent">
+				<div id="m7f8f3e49_ns_content_inner">
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+			
+				var statem7f8f3e49_ns = "normal";
+				if(m9bc09af3_ncnavSections["m7f8f3e49_ns"]) {
+					statem7f8f3e49_ns = m9bc09af3_ncnavSections["m7f8f3e49_ns"]["state"];
+				}
+				m9bc09af3_ncnavSections["m7f8f3e49_ns"]={"height":"","state":statem7f8f3e49_ns,"loaded":false};
+				m9bc09af3_ncnavSectionsOrder.push("m7f8f3e49_ns");
+				fillNavSection({"menu":{"id":"menu0nsaag-ns","mxevent":"changeapp","items":[{"id":"ASSET_MODULE","sub":{"id":"1","mxevent":"changeapp","items":[{"id":"LOCATION_APP","text":"Ubicaciones","eventvalue":"LOCATION","apptype":"RUN"}],"type":1,"openat":null},"text":"Activos","image":"modimg_asset.gif"},{"id":"RELEASE_MODULE","sub":{"id":"2","mxevent":"changeapp","items":[{"id":"PMCHGFSCGA_APP","text":"Cambiar planificaci\u00f3n","eventvalue":"PMCHGFSCGA","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"}],"type":1,"openat":null},"text":"Actualizaci\u00f3n","image":"modimg_release.gif"},{"id":"SETUP_MODULE","sub":{"id":"3","mxevent":"changeapp","items":[{"id":"CALENDR_APP","text":"Calendarios","eventvalue":"CALENDR","apptype":"RUN"},{"id":"MOD10041_HEADER","sub":{"id":"MOD10041_HEADER4","mxevent":"changeapp","items":[{"id":"LABOR_APP","text":"Mano de obra","eventvalue":"LABOR","apptype":"RUN"},{"id":"PERSON_APP","text":"Personas","eventvalue":"PERSON","apptype":"RUN"},{"id":"PERSONGR_APP","text":"Grupos de personas","eventvalue":"PERSONGR","apptype":"RUN"}],"type":1,"openat":null},"text":"Recursos"},{"id":"BBOARD_APP","text":"Tabl\u00f3n de anuncios","eventvalue":"BBOARD","apptype":"RUN"},{"id":"ASSETCAT_APP","text":"Clasificaciones","eventvalue":"ASSETCAT","apptype":"RUN"},{"id":"FUNC_TRN_APP","text":"Funcion Turnos Claro","eventvalue":"FUNC_TRN","apptype":"RUN"},{"id":"DIS_TRN_CLARO_APP","text":"Disponibilidad turnos Claro","eventvalue":"DIS_TRN_CLARO","apptype":"RUN"},{"id":"EMR_APP","text":"Administraci\u00f3n Est\u00e1ndares de Marcaci\u00f3n de Red","eventvalue":"EMR","apptype":"RUN"}],"type":1,"openat":null},"text":"Administraci\u00f3n","image":"modimg_setup.gif"},{"id":"SSDR_MODULE","sub":{"id":"5","mxevent":"changeapp","items":[{"id":"MOD10965_HEADER","sub":{"id":"MOD10965_HEADER6","mxevent":"changeapp","items":[{"id":"PMSCOFFCAT_APP","text":"Cat\u00e1logo de ofertas","eventvalue":"PMSCOFFCAT","apptype":"RUN"}],"type":1,"openat":null},"text":"Solicitudes de cat\u00e1logo"},{"id":"MOD10970_HEADER","sub":{"id":"MOD10970_HEADER7","mxevent":"changeapp","items":[{"id":"VIEWTMPL_APP","text":"Ver plantillas","eventvalue":"VIEWTMPL","apptype":"RUN"}],"type":1,"openat":null},"text":"Solicitudes de escritorio"},{"id":"MOD10980_HEADER","sub":{"id":"MOD10980_HEADER8","mxevent":"changeapp","items":[{"id":"CREATESR_APP","text":"Crear solicitud de servicio","eventvalue":"CREATESR","apptype":"RUN"},{"id":"VIEWSR_APP","text":"Ver solicitudes de servicio","eventvalue":"VIEWSR","apptype":"RUN"},{"id":"SEARCHSOL_APP","text":"Buscar soluciones","eventvalue":"SEARCHSOL","apptype":"RUN"}],"type":1,"openat":null},"text":"Solicitudes de servicio"},{"id":"SRMSEARCH_APP","text":"B\u00fasqueda global de autoservicio","eventvalue":"SRMSEARCH","apptype":"RUN"},{"id":"SRMSSCTR_APP","text":"Centro de autoservicio","eventvalue":"SRMSSCTR","apptype":"RUN"}],"type":1,"openat":null},"text":"Auto-servicio","image":"modimg_ssdr.gif"},{"id":"CHANGE_MODULE","sub":{"id":"9","mxevent":"changeapp","items":[{"id":"CHANGE_APP","text":"Cambios","eventvalue":"CHANGE","apptype":"RUN"},{"id":"PMCHGFSCGA_APP","text":"Cambiar planificaci\u00f3n","eventvalue":"PMCHGFSCGA","apptype":"RUN"},{"id":"PMCHGWDOW_APP","text":"Calendarios de Ventana de cambio","eventvalue":"PMCHGWDOW","apptype":"RUN"},{"id":"PMCHGBO_APP","text":"Per\u00edodos de inactividad","eventvalue":"PMCHGBO","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"AUDITCHGTAS_APP","text":"Auditor\u00eda de Tareas de Cambios","eventvalue":"AUDITCHGTAS","apptype":"RUN"},{"id":"CHCOMITE_APP","text":"Comit\u00e9 de cambios","eventvalue":"CHCOMITE","apptype":"RUN"},{"id":"AUDITCHG_APP","text":"Auditor\u00eda de Cambios","eventvalue":"AUDITCHG","apptype":"RUN"}],"type":1,"openat":null},"text":"Cambio","image":"modimg_change.gif"},{"id":"SERVCAT_MODULE","sub":{"id":"10","mxevent":"changeapp","items":[{"id":"PMSCOFFCAT_APP","text":"Cat\u00e1logo de ofertas","eventvalue":"PMSCOFFCAT","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"}],"type":1,"openat":null},"text":"Cat\u00e1logo de solicitud de servicio","image":"modimg_serviceReqestMgr.gif"},{"id":"TM_MODULE","sub":{"id":"11","mxevent":"changeapp","items":[{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"}],"type":1,"openat":null},"text":"Gesti\u00f3n de tareas","image":"modimg_taskMgmt.gif"},{"id":"CI_MODULE","sub":{"id":"12","mxevent":"changeapp","items":[{"id":"CI_APP","text":"Art\u00edculos de configuraci\u00f3n","eventvalue":"CI","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"CIAPN_APP","text":"Administrador de APN","eventvalue":"CIAPN","apptype":"RUN"},{"id":"SOLDEDCI_APP","text":"Soluciones dedicadas","eventvalue":"SOLDEDCI","apptype":"RUN"},{"id":"PUNTOCENTRAL_APP","text":"Reportes de empresas y negocios","eventvalue":"PUNTOCENTRAL","apptype":"RUN"}],"type":1,"openat":null},"text":"Infraestructura de TI","image":"modimg_configItems.gif"},{"id":"INT_MODULE","sub":{"id":"13","mxevent":"changeapp","items":[{"id":"EXTSYSTEM_APP","text":"Sistemas externos","eventvalue":"EXTSYSTEM","apptype":"RUN"}],"type":1,"openat":null},"text":"Integraci\u00f3n","image":"modimg_int.gif"},{"id":"WO_MODULE","sub":{"id":"14","mxevent":"changeapp","items":[{"id":"WOTRACK_APP","text":"Seguimiento de \u00f3rdenes de trabajo","eventvalue":"WOTRACK","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"CL_PRUEBA_APP","text":"Gestion De Pruebas","eventvalue":"CL_PRUEBA","apptype":"RUN"},{"id":"RISKG_HEADER","sub":{"id":"RISKG_HEADER15","mxevent":"changeapp","items":[{"id":"RISKGESTIO_APP","text":"Gestion de riesgos","eventvalue":"RISKGESTIO","apptype":"RUN"}],"type":1,"openat":null},"text":"Gesti\u00f3n riesgos"},{"id":"INSLISTASOT_APP","text":"Recepci\u00f3n de Infraestructura","eventvalue":"INSLISTASOT","apptype":"RUN"},{"id":"PROY_CLARO_MW_APP","text":"Recepci\u00f3n Microondas y SAT","eventvalue":"PROY_CLARO_MW","apptype":"RUN"},{"id":"RISKPRUEBAS_APP","text":"Gesti\u00f3n de riesgos (pruebas soporte)","eventvalue":"RISKPRUEBAS","apptype":"RUN"}],"type":1,"openat":null},"text":"\u00d3rdenes de trabajo","image":"modimg_wo.gif"},{"id":"PLANS_MODULE","sub":{"id":"16","mxevent":"changeapp","items":[{"id":"JOBPLAN_APP","text":"Planes de trabajo","eventvalue":"JOBPLAN","apptype":"RUN"},{"id":"PLANTRATA_APP","text":"Plan tratamiento riesgos","eventvalue":"PLANTRATA","apptype":"RUN"}],"type":1,"openat":null},"text":"Plan","image":"modimg_plans.gif"},{"id":"SECURITY_MODULE","sub":{"id":"17","mxevent":"changeapp","items":[{"id":"USER_APP","text":"Usuarios","eventvalue":"USER","apptype":"RUN"}],"type":1,"openat":null},"text":"Seguridad","image":"modimg_security.gif"},{"id":"SD_MODULE","sub":{"id":"18","mxevent":"changeapp","items":[{"id":"INCIDENT_APP","text":"Incidencias Claro","eventvalue":"INCIDENT","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"SOLUTION_APP","text":"Soluciones","eventvalue":"SOLUTION","apptype":"RUN"},{"id":"CL_INC_CRI_APP","text":"Gestion Comunicados","eventvalue":"CL_INC_CRI","apptype":"RUN"},{"id":"CL_COMUN_APP","text":"Comunicados","eventvalue":"CL_COMUN","apptype":"RUN"},{"id":"INCTAREAS_APP","text":"Tareas incidentes Claro","eventvalue":"INCTAREAS","apptype":"RUN"},{"id":"INCRECRELATED_APP","text":"Incidentes con registros relacionados","eventvalue":"INCRECRELATED","apptype":"RUN"},{"id":"CTA_USR_APP","text":"Cuentas de usuario","eventvalue":"CTA_USR","apptype":"RUN"},{"id":"CHG_SOLUTION_APP","text":"Acciones de mejora Cambios","eventvalue":"CHG_SOLUTION","apptype":"RUN"}],"type":1,"openat":null},"text":"Servicio de atenci\u00f3n al usuario","image":"modimg_sd.gif"}],"type":1,"openat":null}}, {"labelledBy":"m7f8f3e49_ns_label","args":{"content":{"events": dojo.toJson([{"navSectionId":"m7f8f3e49_ns","containerId" : "m9bc09af3_nc","classname":"ns_goto","showImages" : "true","isQuery" : "false","render" : "true"}])}}});
+				</script>
+		
+	</div>
+	
+
+	</div> 
+	</div> 
+
+	<script type="text/javascript">
+		require(["dojo/on", "dojo/dom"], function(on , dom){
+			var searchField = dom.byId('nav_search_fld');
+			dojo.attr("m9bc09af3_nc", {"searchFieldId" : searchField.id});
+			on(searchField, 'keyup', function(event){
+				if(!hasKeyCode(event, KEYCODE_ESC)){
+					menus.menuSearch('m9bc09af3_nc','m9bc09af3_nc',this, {'group':'div.navSection','title':'.navTitle'});
+				}
+			});
+		})
+		fixNavContainer('m9bc09af3_nc');
+		// delay this as IE wraps the toolbar late in the process and the navbar top position is calculated incorrectly
+		function fixIt() {
+			fixNavContainer('m9bc09af3_nc');
+			var navContainer = dojo.byId('m9bc09af3_nc');
+			
+			dojo.connect(window, 'resize', function() {sizePanes('m9bc09af3_nc', true)});
+			var header = dojo.byId('m9bc09af3_ncnavcontainerheader');
+			if(header) {
+				addLoadMethod("dojo.publish('sizeNavHeader', dojo.byId('m9bc09af3_nc').clientWidth);");
+			}
+			if(navContainer) {
+				var navWidth = parseInt(navContainer.offsetWidth);
+				sizeAnchors(navContainer, navWidth);
+			}
+			var state = "open";
+			if(-1==1){
+				state = "closed";
+			}
+			dojo.attr(navContainer, "maxwidth", 190);
+			setNavContainerState(navContainer, state, false, true);
+		}
+		var navContainerStrings = {"collapse":"Minimizar sección ","expand":"Maximizar sección "};
+		addLoadMethod("window.setTimeout(fixIt, 100);");
+	</script>
+
+</td>
+				</tr>
+</table>
+
+		</div>
+	</td>
+
+		<td id="SystemNavAppContentg-sc" aria-live="polite"  style="width:100%;display:;;padding:0px 2px;vertical-align: top" sc="true"  height="100%" class="sectioncol appContent">
+			<div id="SystemNavAppContentg-sc_div" >
+			
+<table role="presentation" control="true" id="SystemNavAppContentg-chld"   width="100%" height="100%" class="  " summary=""  style="width:100%;height:100%;;vertical-align:top">				<tr id="m1e20cba1-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m1e20cba1-co2_0" role='presentation'     colspan='2' nowrap="nowrap"      style="vertical-align:top;">
+
+<table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+			<ul class="tabgroup" nowrap="nowrap" role="tablist"><li role="presentation" id="m1e20cba1-sct_106126" ctype="tab"><a onkeydown="itemAKey(event,this)" aria-expanded="true" role="tab" tabindex="0" nowrap="nowrap" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106126')" id="m1e20cba1-sct_anchor_0" title=".Claro" class="text tablabelon on" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106126')}" onfocus="setCurrentfocusId(event, this);">&nbsp;.Claro</a></li><li role="presentation" id="m1e20cba1-sct_106122" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106122')" id="m1e20cba1-sct_anchor_1" title="Claro O&amp;M" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106122')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Claro O&amp;M</a></li><li role="presentation" id="m1e20cba1-sct_106123" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106123')" id="m1e20cba1-sct_anchor_2" title="Coordinador Claro" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106123')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Coordinador Claro</a></li><li role="presentation" id="m1e20cba1-sct_106128" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106128')" id="m1e20cba1-sct_anchor_3" title="Gerencia O&amp;M" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106128')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Gerencia O&amp;M</a></li><li role="presentation" id="m1e20cba1-sct_123530" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','123530')" id="m1e20cba1-sct_anchor_4" title="Implementador y Propietario del Cambio" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','123530')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Implementador y Propietario del Cambio</a></li><li role="presentation" id="m1e20cba1-sct_106124" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106124')" id="m1e20cba1-sct_anchor_5" title="Ingeniero Claro" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106124')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Ingeniero Claro</a></li><li role="presentation" id="m1e20cba1-sct_106127" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106127')" id="m1e20cba1-sct_anchor_6" title="SMU" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106127')}" onfocus="setCurrentfocusId(event, this);">&nbsp;SMU</a></li><li role="presentation" id="m1e20cba1-sct_106125" ctype="tab"><a onkeydown="itemAKey(event,this)"  role="tab" tabindex="-1" nowrap="nowrap" onfocus="appendClass(this,'offhover')" onblur="removeClass(this,'offhover')" href="Javascript: sendEvent('changesc','m1e20cba1-sct','106125')" id="m1e20cba1-sct_anchor_7" title="Solicitudes de servicio" class="text tablabeloff off" onkeypress="if(event.keyCode==KEYCODE_SPACEBAR){sendEvent('changesc','m1e20cba1-sct','106125')}" onfocus="setCurrentfocusId(event, this);">&nbsp;Solicitudes de servicio</a></li></ul>
+		 </td>
+	</tr>
+</table>
+</td>
+				</tr>
+				<tr id="m68f91188-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m68f91188-co2_0" role='presentation'     colspan='2' nowrap="nowrap"   align="right"   style="vertical-align:top;">
+
+		<table role="presentation" id="m68f91188-sto" class='scoo'  border="0" width="100%" align="right">
+			<tr>
+				<td valign="top" align="right" nowrap>
+					<table role="presentation" border="0" cellpadding="2" bordercolor="#111111" align="right">
+					   <tr>
+									<td id="scportlets_scoptions_cs-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="scportlets_scoptions_cs-lb" align='left' ctype="label"    tabindex="0"    ev="106126"  targetid="scportlets_scoptions_cs-lb"  mxevent="click"  class="text sco   anchor" style="display:block;cursor:pointer;" title="Cambiar contenido/diseño"><img id='scportlets_scoptions_cs-lb_image' src='btn_changecontent.gif'  border='0'  style='vertical-align:bottom;margin:0px;margin-left:3px;margin-right:3px;' alt='Cambiar contenido/diseño'/><span>Cambiar contenido/diseño</span></span>
+</td>
+				<td id="scportlets_scoptions_ds-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="scportlets_scoptions_ds-lb" align='left' ctype="label"    tabindex="0"    ev="106126"  targetid="scportlets_scoptions_ds-lb"  mxevent="click"  class="text sco   anchor" style="display:block;cursor:pointer;" title="Mostrar configuración"><img id='scportlets_scoptions_ds-lb_image' src='btn_displaysettings.gif'  border='0'  style='vertical-align:bottom;margin:0px;margin-left:3px;margin-right:3px;' alt='Mostrar configuración'/><span>Mostrar configuración</span></span>
+</td>
+				<td id="scportlets_scoptions_us-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="scportlets_scoptions_us-lb" align='left' ctype="label"    tabindex="0"    ev="106126"  targetid="scportlets_scoptions_us-lb"  mxevent="click"  class="text sco   anchor" style="display:block;cursor:pointer;" title="Actualizar el centro de inicio"><img id='scportlets_scoptions_us-lb_image' src='btn_updatestartcenter.gif'  border='0'  style='vertical-align:bottom;margin:0px;margin-left:3px;margin-right:3px;' alt='Actualizar el centro de inicio'/><span>Actualizar el centro de inicio</span></span>
+</td>
+
+				</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+</td>
+				</tr>
+				<tr id="md380944e-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+
+
+<td id="ma80827a0-stp" arial-live="polite"  width="25%" class="psc ppl" valign="top">
+
+			
+			<div id="portletbox_628082" class="portletbox">
+				<table role="presentation" width='100%' border="0" cellspacing='0' cellpadding='0' class='pbt favoriteappsportlet_pc' style="margin-bottom:10px">				<tr id="mbcf4b431-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+		<td id="mbcf4b431-hb" class="hbouter"  style="padding:0px;;white-space:nowrap;"  role="presentation">
+			<table cellspacing="0" cellpadding="0" style="width:100%;" class="" role="presentation">
+				<tr>
+						<td class="h_l"></td>
+<td id="mbcf4b431-hb_header_0"   align="left" class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+
+<h1 labelledby="mbcf4b431-lb_h1" style="display:inline"><label id="mbcf4b431-lb" align='left' ctype="label"     noclick="1"   targetid="mbcf4b431-lb"    class="text pt  " style="display:block;padding-left:2px;padding-top:2px;">Aplicaciones favoritas</label></h1>
+</td><td id="mbcf4b431-hb_header_1" aria-hidden="true"   class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%">	<div id="mbcf4b431-bl" aria-disabled="true" name="mbcf4b431-bl" class="ts  "  >&nbsp;</div>
+
+</td><td id="mbcf4b431-hb_header_2"    class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"></td><td id="mbcf4b431-hb_header_3"   align="right" class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"><a id=mbcf4b431-ti  href="Javascript: void(0);" ctype="toggleimage" ev="true" title="Minimizar ventana de portlet" tabindex="0"    title="Minimizar ventana de portlet"><img id="mbcf4b431-ti_img"  aria-disabled="true"  tabindex="-1" border="0" class="ti   " src="btn_minimizeportlet.gif" source="btn_minimizeportlet.gif" imgtype="" ev="true" align="top" style="display:block;margin:0px;"  alt="Minimizar ventana de portlet" title="Minimizar ventana de portlet"   /></a>
+			
+</td><td id="mbcf4b431-hb_header_4"    class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"></td>				<td style="padding-left:0px;" class="phbr" id="mbcf4b431-hb_right" nowrap >
+				</td>
+					<td class="h_r"></td>
+				</tr>
+			</table>
+		</td>
+				</tr>
+				<tr id="mbcf4b431-co2_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="mbcf4b431-co3_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">
+<div role="navigation" aria-label="Aplicaciones favoritas" aria-hidden="false" id='portletbody_628082_outer' style='display: inline; top:0px;'>
+	<table cellspacing="0" cellpadding="0" width="100%" height="100%" role="presentation">
+		<tr>
+			<td id='portletbody_628082'>
+			</td>
+		</tr>	
+		<tr>
+			<td id="load_628082" class="plinner plc"><img id="mbcf4b431-content_image" src="progressbar.gif" alt="Cargando" aria-label="Cargando" class="pli" loadinglabel="Cargando" refreshlabel="Recargar"/></br>
+				<span id="mbcf4b431-content_retrylink" style="display:none">Ha habido un problema al cargar el portlet. </span>
+			</td>	
+		</tr>
+	</table> 
+</div>                                         
+<script>
+	var def = {};
+	def["id"] = "mbcf4b431-content";
+	def["title"] = "Aplicaciones favoritas";
+	def["layoutId"] = "628082";
+	def["headerId"] = "mbcf4b431-hb";
+	def["reload"] = "Recargar";
+	setupPortlet(def);
+	addLoadMethod("refreshPortlet('mbcf4b431-content','628082')");
+</script></td>
+				</tr>
+	
+				</table>
+			</div>	
+			
+			<div id="portletbox_628080" class="portletbox">
+				<table role="presentation" width='100%' border="0" cellspacing='0' cellpadding='0' class='pbt quickinsertportlet_pc' style="margin-bottom:10px">				<tr id="m43c5a6a8-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+		<td id="m43c5a6a8-hd" class="hbouter"  style="padding:0px;;white-space:nowrap;"  role="presentation">
+			<table cellspacing="0" cellpadding="0" style="width:100%;" class="" role="presentation">
+				<tr>
+						<td class="h_l"></td>
+<td id="m43c5a6a8-hd_header_0"   align="left" class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+
+<h1 labelledby="m43c5a6a8-lb_h1" style="display:inline"><label id="m43c5a6a8-lb" align='left' ctype="label"     noclick="1"   targetid="m43c5a6a8-lb"    class="text pt  " style="display:block;padding-left:2px;padding-top:2px;">Insercion rapida</label></h1>
+</td><td id="m43c5a6a8-hd_header_1" aria-hidden="true"   class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%">	<div id="m43c5a6a8-bl" aria-disabled="true" name="m43c5a6a8-bl" class="ts  "  >&nbsp;</div>
+
+</td><td id="m43c5a6a8-hd_header_2"    class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"></td><td id="m43c5a6a8-hd_header_3"    class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"><a id=m43c5a6a8-ti  href="Javascript: void(0);" ctype="toggleimage" ev="true" title="Minimizar ventana de portlet" tabindex="0"    title="Minimizar ventana de portlet"><img id="m43c5a6a8-ti_img"  aria-disabled="true"  tabindex="-1" border="0" class="ti   " src="btn_minimizeportlet.gif" source="btn_minimizeportlet.gif" imgtype="" ev="true" align="top" style="display:block;margin:0px;"  alt="Minimizar ventana de portlet" title="Minimizar ventana de portlet"   /></a>
+			
+</td><td id="m43c5a6a8-hd_header_4"    class="ps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%"></td>				<td style="padding-left:0px;" class="phbr" id="m43c5a6a8-hd_right" nowrap >
+				</td>
+					<td class="h_r"></td>
+				</tr>
+			</table>
+		</td>
+				</tr>
+				<tr id="m43c5a6a8-co2_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m43c5a6a8-co3_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">
+
+<div role="navigation" aria-label="Insercion rapida" aria-hidden="false" id='portletbody_628080_outer' style='display: inline; top:0px;'>
+	<table cellspacing="0" cellpadding="0" width="100%" height="100%" role="presentation">
+		<tr>
+			<td id='portletbody_628080'>
+			</td>
+		</tr>	
+		<tr>
+			<td id="load_628080" class="plinner plc"><img id="m43c5a6a8-content_image" src="progressbar.gif" alt="Cargando" aria-label="Cargando" class="pli" loadinglabel="Cargando" refreshlabel="Recargar"/></br>
+				<span id="m43c5a6a8-content_retrylink" style="display:none">Ha habido un problema al cargar el portlet. </span>
+			</td>	
+		</tr>
+	</table> 
+</div>                                         
+<script>
+	var def = {};
+	def["id"] = "m43c5a6a8-content";
+	def["title"] = "Insercion rapida";
+	def["layoutId"] = "628080";
+	def["headerId"] = "m43c5a6a8-hd";
+	def["reload"] = "Recargar";
+	setupPortlet(def);
+	addLoadMethod("refreshPortlet('m43c5a6a8-content','628080')");
+</script></td>
+				</tr>
+	
+				</table>
+			</div>	
+
+</td>
+
+
+<td id="m3101761a-stp" arial-live="polite"  width="65%" class="psc ppr" valign="top">
+
+			
+			<div id="portletbox_628084" class="portletbox">
+				<table role="presentation" width='100%' border="0" cellspacing='0' cellpadding='0' class='pbt bulletinboardportlet_pc' style="margin-bottom:10px">				<tr id="m975d39f-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+		<td id="m975d39f-hb" class="hbouter"  style="padding:0px;;white-space:nowrap;"  role="presentation">
+			<table cellspacing="0" cellpadding="0" style="width:100%;" class="" role="presentation">
+				<tr>
+						<td class="h_l"></td>
+<td id="m975d39f-hb_header_0"   align="center" class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+<img id="m975d39f-img" sf="1" aria-hidden="true" active="0" ctype="image" alt=""  src="btn_bboard.gif" source="btn_bboard.gif" imgtype="" style="display:block;margin:0px" border="0"    class="bbpimg " align="center"     title=""/>
+</td><td id="m975d39f-hb_header_1"   align="left" class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+
+<h1 labelledby="m975d39f-lb_h1" style="display:inline"><label id="m975d39f-lb" align='left' ctype="label"     noclick="1"   targetid="m975d39f-lb"    class="text bbpl  " style="display:block;padding-left:2px;padding-top:2px;">Tablon de anuncios</label></h1>
+</td><td id="m975d39f-hb_header_2"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+<img id="m975d39f-img1" sf="1" aria-hidden="true" active="0" ctype="image" alt=""  src="tablebtn_divider.gif" source="tablebtn_divider.gif" imgtype="" style="display:block;margin:0px" border="0"           title=""/>
+</td><td id="m975d39f-hb_header_3"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;><a id=m975d39f-ti  href="Javascript: void(0);" ctype="toggleimage" ev="false" title="Abrir Filtro CTRL+Z" tabindex="0"    title="Abrir Filtro CTRL+Z"><img id="m975d39f-ti_img"  aria-disabled="true"  tabindex="-1" border="0" class="ti   " src="tablebtn_filter_off.gif" source="tablebtn_filter_off.gif" imgtype="" ev="false" align="top" style="display:block;margin:0px;"  alt="Abrir Filtro CTRL+Z" title="Abrir Filtro CTRL+Z"   /></a>
+			
+</td><td id="m975d39f-hb_header_4"   align="left" class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+
+<span id="m975d39f-lb1" align='left' ctype="label"    tabindex="0"      targetid="m975d39f-lb1"  mxevent="click"  class="text tht   anchor" style="display:block;padding-left:2px;padding-top:2px;cursor:pointer;">Filtro</span>
+</td><td id="m975d39f-hb_header_5"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+<img id="m975d39f-img2" sf="1" aria-hidden="true" active="0" ctype="image" alt=""  src="img_arrow_quickfilter.gif" source="img_arrow_quickfilter.gif" imgtype="" style="display:block;margin:0px" border="0"           title=""/>
+</td><td id="m975d39f-hb_header_6"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;><a id=m975d39f-ti2 href="Javascript: void(0)" ctype="toggleimage" ev="false" title="Filtrar tabla" tabindex="-1" active="0"   title="Filtrar tabla" disabled="disabled"><img id="m975d39f-ti2_img"  aria-disabled="true"  tabindex="-1" border="0" class="ti   opacity_30" src="qf_find_disabled.gif" source="qf_find_disabled.gif" imgtype="" ev="false" align="top" style="display:block;margin:0px;"  alt="Filtrar tabla" title="Filtrar tabla"   /></a>
+			
+</td><td id="m975d39f-hb_header_7"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;>
+<img id="m975d39f-img3" sf="1" aria-hidden="true" active="0" ctype="image" alt=""  src="tablebtn_divider.gif" source="tablebtn_divider.gif" imgtype="" style="display:block;margin:0px" border="0"           title=""/>
+</td><td id="m975d39f-hb_header_8"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width:100%;><a id=m975d39f-ti3 href="Javascript: void(0)" ctype="toggleimage" ev="false" title="" tabindex="-1" active="0"   title="" disabled="disabled"><img id="m975d39f-ti3_img"  aria-disabled="true"  tabindex="-1" border="0" class="ti   opacity_30" src="qf_clear_disabled.gif" source="qf_clear_disabled.gif" imgtype="" ev="false" align="top" style="display:block;margin:0px;"  alt="" title=""   /></a>
+			
+</td><td id="m975d39f-hb_header_9" aria-hidden="true"   class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%">	<div id="m975d39f-bl" aria-disabled="true" name="m975d39f-bl" class="ts  "  >&nbsp;</div>
+
+</td><td id="m975d39f-hb_header_10"    class="bbps   hbsh" valign="middle" style="padding:0px;white-space:nowrap;" width="100%">
+<img id="m975d39f-img4" sf="1" aria-hidden="true"  ctype="image" alt="Quitar portlet"  src="btn_removeportlet.gif" source="btn_removeportlet.gif" imgtype="" style="cursor:default;display:block;margin:0px" border="0"           tabindex="0" title="Quitar portlet"/>
+</td>					<td class="h_r"></td>
+				</tr>
+			</table>
+		</td>
+				</tr>
+				<tr id="m975d39f-co2_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m975d39f-co3_0" role='presentation'      nowrap="nowrap"      style="vertical-align:top;">
+<div role="navigation" aria-label="Tablon de anuncios" aria-hidden="false" id='portletbody_628084_outer' style='display: inline; top:0px;'>
+	<table cellspacing="0" cellpadding="0" width="100%" height="100%" role="presentation">
+		<tr>
+			<td id='portletbody_628084'>
+			</td>
+		</tr>	
+		<tr>
+			<td id="load_628084" class="plinner plc"><img id="m975d39f-content_image" src="progressbar.gif" alt="Cargando" aria-label="Cargando" class="pli" loadinglabel="Cargando" refreshlabel="Recargar"/></br>
+				<span id="m975d39f-content_retrylink" style="display:none">Ha habido un problema al cargar el portlet. </span>
+			</td>	
+		</tr>
+	</table> 
+</div>                                         
+<script>
+	var def = {};
+	def["id"] = "m975d39f-content";
+	def["title"] = "Tablon de anuncios";
+	def["layoutId"] = "628084";
+	def["headerId"] = "m975d39f-hb";
+	def["reload"] = "Recargar";
+	setupPortlet(def);
+	addLoadMethod("refreshPortlet('m975d39f-content','628084')");
+</script></td>
+				</tr>
+	
+				</table>
+			</div>	
+
+</td>
+				</tr>
+
+		<tr>
+			<td id="m821cb386-so"  control="true" style="vertical-align:top;">
+	
+		<div id="m821cb386-so_compHolder" aria-live="polite"  style="padding:0px;margin:0px;vertical-align:top;height: 100%;display:"  >
+		
+			<table id="m821cb386-so_inner" role="presentation"  cellspacing="0" class="so   " cellpadding="0" height="100%" width="100%"   style="vertical-align:top;" ><tr id="m821cb386-so_1"  style="vertical-align:top;display:;" > 
+	<td id="m821cb386-se" aria-live="polite"      style="padding: 0px 5px;display:;white-space:nowrap;padding-bottom: 2px;" class="section   " valign="top"  ><table role="presentation" control="true" id="m821cb386-chld"   width="100%"  class="tdtblw  " summary=""  style="width:100%;;;vertical-align:top">				<td id="m821cb386_hyperlink_0-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;"></td>
+				<td id="m821cb386_hyperlink_1-co_0" role='presentation'      nowrap="nowrap"   align="left"   style="vertical-align:top;">
+
+<span id="m821cb386_hyperlink_1-lb" align='left' ctype="label"    tabindex="0"    ev="mobile"  targetid="m821cb386_hyperlink_1-lb"  mxevent="click"  class="text scs   anchor" style="display:block;padding-left:2px;padding-top:2px;cursor:pointer;">Centro de inicio móvil</span>
+</td>
+</table>
+</td>
+		</tr>
+		
+			</table>
+		</div>
+	
+			</td>
+		</tr>
+	</table>
+
+		</div>
+	</td>
+				</tr>
+</table>
+</td>
+		</tr>
+		
+			</table>
+		</div>
+	
+			</td>
+		</tr>
+	</table>
+	</div>
+	<script>
+		clientAreaId = "mbd5bb736-ca";
+	    var pageScrollArea = dojo.byId(clientAreaId);
+		var SYSTEMNAVBAR = true; 
+		var adjacentColumn = null;
+		dojo.connect(window, "resize", function(){
+			window.setTimeout(function(){
+				sizeClientArea();
+			}, 200);
+		});
+		addLoadMethod("sizeClientArea()");
+		dojo.subscribe("maintabchange", null, function(message){
+			var clientArea = dojo.byId("mbd5bb736-ca");
+			if(clientArea) {
+				clientArea.scrollTop = 0;
+				clientArea.scrollLeft = 0;
+			}
+			if (adjacentColumn && adjacentColumn.children[0])
+			{
+				adjacentColumn.children[0].scrollTop = 0;
+				adjacentColumn.children[0].scrollLeft = 0;
+			}
+					
+		});
+	</script>
+</td>
+				</tr>
+				<tr id="m924132f-co_0"  role='presentation'    control="true"    style="vertical-align:top;">
+				<td id="m924132f-co2_0" role='presentation'     colspan='20' nowrap="nowrap"      style="vertical-align:top;"><div id="m924132f-gp" width="100%"  nowrap="nowrap" class=" abs " style="display:block;"></div></td>
+				</tr>
+</table>
+</td>
+				</tr>
+</table></td>
+				</tr>
+</table></td>
+				</tr>
+	</table>
+	<table id="dialogholder" style="position:absolute;top:0px;left:0px;" role="presentation">
+		<tr>
+			<td id="dialogholdertd" width="100%" aria-live="polite"></td>
+			<td id="popupholdertd" width="100%" onClick="cancelBubble(event);" aria-live="polite" role="presentation"></td>
+		</tr>
+	</table>
+
+
+<div id="warndiv" style="" aria-hidden="true" onclick="handleWarnDialog('close')"  role="alert">
+	<div id='warndiv_inner_dialogwait' style="display:none" class='wait_modal'>&nbsp;</div>
+	<table id="warndiv_inner" positionX="" positionY="" tabindex="0" modal="true" width="400" role="presentation" class="dsc1 dh mc modal" border="0" defaultbutton="" style="display: none" aria-hidden="true" >
+		<tr style="" valign="top">
+			<td valign="BOTTOM" style="padding:0px;" class="dh mh dhb">
+				<table id="warndiv_content0" width="100%" role="presentation">
+					<tr>
+						
+						<td align="left" class="" valign="middle" style="padding:0px;" nowrap="nowrap">
+							<h1 style="display:inline" title="Mensaje del sistema"><span align='left' ctype="label" noclick="1" targetid="mx696" class="text dh mh " style="display:block;padding-left:2px;padding-top:2px;;;;" title="Mensaje del sistema">Mensaje del sistema</span></h1>
+						</td>
+						<td class="" valign="middle" style="padding:0px;" width="100%" nowrap="nowrap">
+							<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc dhbsh" style="display:inline;">
+								<div class="ts dh mh " >&nbsp;</div>
+							</div>
+						</td>
+						<td align="right" class="" valign="middle" style="padding:0px;" width="100%" nowrap="nowrap">
+							<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc dhbsh" style="display:inline;"><img sf="1" ctype="image" tabindex="0" src="blank.gif" imgtype="" alt="" style="cursor:default;display:block;margin:0px" border="0" dialog="1" align="right" /></div>
+						</td>
+						<td align="right" class="" valign="middle" style="padding:0px;" width="100%" nowrap="nowrap">
+							<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc dhbsh" style="display:inline;"><img sf="1" active="0" ctype="image" tabindex="-1" src="blank.gif" imgtype="" alt="" style="display:block;margin:0px" border="0" dialog="1" align="right" /></div>
+						</td>
+						<td align="right" class="" valign="middle" style="padding:0px;" width="100%" nowrap="nowrap">
+							<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc dhbsh" style="display:inline;"><img sf="1" ctype="image" tabindex="0" src="blank.gif" imgtype="" alt="" style="cursor:default;display:block;margin:0px" border="0" dialog="1" align="right" /></div>
+						</td>
+						<td align="right" class="" valign="middle" style="padding:0px;" width="100%" nowrap="nowrap">
+							<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc dhbsh" style="display:inline;"><img sf="1" active="0" ctype="image" tabindex="-1" src="blank.gif" imgtype="" alt="" style="display:block;margin:0px" border="0" dialog="1" align="right" /></div>
+						</td>
+						
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr style="" valign="top">
+			<td valign="BOTTOM" style="padding:0px;">
+				<table class="dialogb" width="100%" style="position:relative;top:0px;margin:0px;" height="100%" role="presentation">
+					<tr>
+						<td class="" style=";padding:0px;">
+							<table width="100%" height="*" role="presentation">
+								<tr>
+									<td style="height:100%;padding:10px;">&nbsp;</td>
+								</tr>
+							</table>
+							<table width="100%" height="-50px" role="presentation">
+								<tr>
+									<td class="db ml " style="height:100%;padding:10px;">
+										<div id="warndiv_bodydiv">
+											<h1 style="display:inline" title="">
+											<span id="warndiv_warnmsg" class="text ml " style="display:block;padding-left:2px;padding-top:2px;;;;" title=" " aria-live="polite">WARN MESSAGE</span>
+											</h1>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table width="100%" height="*" role="presentation">
+								<tr>
+									<td align="right" nowrap="nowrap">
+										<div nowrap="nowrap" needsrefresh="false" vis="true" class="bc" style="display:inline;">
+											<button type="button" control="true" style="" class="text pb default" onmouseover="appendClass(this,'pbo')" onmouseout="removeClass(this,'pbo')">
+											&nbsp;&nbsp;Aceptar&nbsp;&nbsp;
+											</button>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<img tabindex="0" alt="" role="presentation" onfocus="moveable_onfocus(this);" src="blank.gif" width="1" height="1" lastbuttonid="" aria-hidden="true"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+window.setTimeout("if(dojo.byId('warndiv_inner')){dojo.require('dojo.dnd.move');var warndivDnD = new dojo.dnd.move.constrainedMoveable(dojo.byId('warndiv_inner'),{constraints : function(){var d=dojo.byId('warndiv_inner'); return {'t':0, 'l':-1*(d.clientWidth-50)};}, within: true, skip: true, handle: dojo.byId('warndiv_content0')});}",500);
+</script>
+		<div id="wait" width="100%" height="100%" class="wait" style="position:absolute;top:0px;left:0px;height:100%;width:100%">&nbsp;</div>
+	</form>
+
+	<script>
+		dialogCount=0;//all dialogs increase the count when _init (on refresh and straight render of page)
+		addLoadMethod("addHotKey('ALT+P','titlebar_hyperlink_8-lbshowmenu_profile', 'click')");
+		addLoadMethod("addHotKey('ALT+S','titlebar_hyperlink_9-lbsignout', 'click')");
+		addLoadMethod("addHotKey('ALT+B','titlebar_bulletinboardlink_3-lbshowbboard', 'click')");
+		addLoadMethod("addHotKey('ALT+R','titlebar_hyperlink_6-lbshowmenu_reportsmenu', 'click')");
+		addLoadMethod("addHotKey('ALT+H','titlebar_hyperlink_10-lbshowmenu_help', 'click')");
+		fixPasswordFields();
+		if(DESIGNMODE)
+		{
+			parent.unLockWait();
+			parent.hideWait();
+		}
+			startLogoutTimer();
+			startTimer();
+
+	</script>
+	
+	<script>
+		if(tpaeConfig.validationOn)
+		{
+			setButtonEnabled(saveButton,false);
+		}
+	</script>
+
+	<div id="storage" style="display:none"></div>
+
+<div id="ascerr_div" aria-hidden="true" style="display:none;" aria-hidden="true:">
+	<table border="0" style="width:100%" cellpadding="0" cellspacing="0" role="presentation" >
+		<tr>
+			<td>
+				<div id="template_userinput" class="text"></div>
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					<tr>
+						<td align="right"><img id="template_ascerr_errorimg" border="0" src="blank.gif" alt="" style="margin: 0px 10px 0px 0px"/></td>
+					 	<td id="template_ascerrmsg" ctype="ttdialog" class="text"></td>
+					</tr>
+				</table>
+			</td>
+			<td valign="top" align="right"><button type="button" id="template_ascerr_closeimg" tabindex="0" border="0" onclick="stopPopOver()" onkeydown="if(hasKeyCode(event,'KEYCODE_SPACEBAR|KEYCODE_ENTER')){stopPopOver();}" style="border:0px;height:20px;width:20px;background:transparent;border:0px" aria-label="Cerrar diálogo" title="Cerrar diálogo"><img role="presenation" id="template_ascerr_close_img" src="dialogclose.gif"/></button></td>
+		</tr>
+		<tr>
+			<td>
+				<iframe src="" id="template_ascerr_div_iframe" frameborder="0" style="border:0px;display:none" aria-hidden="true" title="External Content"></iframe>
+			</td>
+		</tr>
+	</table>
+	<div id="template_tt_default_help" class="text">
+		<p id="template_whelp" style="width: 400px;margin: 10px 0px 0px;">Pulse <Q>"Utilizar mi valor"</Q> para cambiar el valor que ha especificado o <Q>"Ir atrás"</Q> para volver al valor anterior.</p>
+		<p id="template_ehelp" style="width: 400px;margin: 10px 0px 0px;">Pulse <Q>"Editar mi valor"</Q> para cambiar el valor que ha especificado o <Q>"Ir atrás"</Q> para volver al valor anterior.</p>
+	</div>
+	<div id="template_tt_defaultbuttons" align="right">
+		<button type="button" id="template_ync_ybtn" class="text" onclick="processYesNoCancelButton(this, event, 8);">Sí</button>
+		<button type="button" id="template_ync_nbtn" class="text" onclick="processYesNoCancelButton(this, event, 16);">No</button>
+		<button type="button" id="template_ync_okbtn" class="text" onclick="processYesNoCancelButton(this, event, 2);">Aceptar</button>
+		<button type="button" id="template_ync_cbtn" class="text" onclick="processYesNoCancelButton(this, event, 4);">Cancelar</button>
+		<button type="button" id="template_ync_clbtn" class="text" onclick="processYesNoCancelButton(this, event, 1);">Cerrar</button>
+		<button type="button" id="template_chkbx_btn" class="text" onclick="processIgnoreButton(this, event);">Aceptar</button>
+		<button type="button" id="template_edit_ebtn" class="text" onclick="processEditButton(this, event);">Editar mi valor</button>
+		<button type="button" id="template_ignore_ibtn" class="text" onclick="processIgnoreButton(this, event);">Utilizar mi valor</button>
+		<button type="button" id="template_revert_rbtn" class="text" onclick="processRevertButton(this, event);">Ir atrás</button>
+		<span id="template_tt_custom_buttons">&nbsp;</span>
+	</div>
+</div>
+
+	
+</body>
+<script>
+require(["dojo/hccss"]);
+require(["dojo/domReady!"], function(){
+	tpaeConfig['hc'] = new HighContrast(document.body.className.indexOf('dj_a11y')>=0);
+	tpaeConfig['isHighContrast'] = function(){return this.hc._isHC();};
+});
+menus = new MenuController("shared","Siguiente","Anterior","Buscar","Búsqueda de {0}.");
+menus["handlerId"] = "mainrec_menus";
+
+function processLoadMethods()
+{
+	while(loadMethods.length > 0)
+	{
+		var loadMethod = loadMethods.shift();
+		try
+		{
+			if(DEBUGLEVEL > 1)
+			{
+				console.debug(loadMethod);
+			}
+			eval(loadMethod);
+		}
+		catch(error)
+		{
+			console.error("LoadMethod error["+error.message+"]. Unable to process: ["+loadMethod+"]");
+		}
+	}
+}
+function getQSTB()
+{
+	return getElement("null");
+}
+sizeCanvas();
+</script>
+
+	<div aria-hidden="true" id="HF" class="dsc1" style="padding:2px;left:0px;top:0px;z-index:50000;background:#E7E7E7;border:1px solid #999999;display:none;position:absolute;">
+	<div aria-hidden="true" class="dh mh dhb">Hidden Form</div>
+	<form role="form" aria-label="hidden form" aria-hidden="true" id="hiddenform" name="hiddenform" method="POST" action="http://100.126.20.133/maximo/ui/maximo.jsp" style="padding:3px;">
+		<input type="text" size="45" name="event" id="event" title="event type" aria-hidden="true"/><br />
+		<input type="text" size="45" name="targetid" id="targetid" title="target id" aria-hidden="true" /><br />
+		<input type="hidden" size="45" name="value" id="value" aria-hidden="true" />
+		<input type="text" size="45" name="changedcomponentid" id="changedcomponentid"  title="changed component id" aria-hidden="true"/><br />
+		<input type="text" size="45" name="vischangedcomponentvalue" id="vischangedcomponentvalue" title="changed component value" aria-hidden="true"/><br />
+		<input type="hidden" name="changedcomponentvalue" aria-hidden="true" />
+		<input type="hidden" name="localStorage" aria-hidden="true" />
+		<input type="text" size="45" name="currentfocus" id="currentfocus" title="focus id" aria-hidden="true" /><br />
+		<input name="scrollleftpos" id="scrollleftpos" size="45" title="Scroll Left" aria-hidden="true"/><br />
+		<input name="scrolltoppos" id="scrolltoppos" size="45"  title="Scroll Top" aria-hidden="true"/><br />
+		<input type="text" size="45" name="uisessionid" id="uisessionid" aria-hidden="true" value="10105" class="fld_ro" readonly="readonly" title="ui session id"/><br />
+		<input type="text" size="45" name="csrftokenholder" id="csrftokenholder" aria-hidden="true" value="ihd5km3716vtgsg7jqqbqs4rle" title="CSRF Token" readonly="readonly" class="fld_ro"/><br />
+	</form>
+	</div>
+<script>
+	//supported data types
+	var CS_VALIDATE_OK_LABEL = "Aceptar";
+    var MORE_INFO = "<a href='{0}' target='help' > Más información</a>";
+    var MOREHELP_URL = "http://www.ibm.com:80/support/knowledgecenter/SSLKT6_7.6.0.9/com.ibm.support.mbs.doc/messages/{0}.html"
+	var CS_VALIDATE_REVERT = "Ir atrás";
+	var DATA_TYPES = {
+		"aln":0,
+		"upper":1,
+		"lower":2,
+		"date":3,
+		"datetime":4,
+		"time":5,
+		"integer":6,
+		"smallint":7,
+		"bigint":19,
+		"decimal":9,
+		"float":8,
+		"duration":10,
+		"amount":11
+	};
+	var NUMERIC_CHARS = new Array("\\.",",","-"," ");
+	var DATA_TYPE_ERRORS = {
+		3:"El formato de fecha no es válido. Utilice el formato de fecha definido por el entorno local o utilice el control de calendario para entrar una fecha. (BMXAA4143E)",
+		4:"El formato de fecha/hora no es válido. Asegúrese de que la fecha y hora están especificadas con el formato válido que soporta el parámetro del entorno local actual. (BMXAA4144E)",
+		5:"El formato de hora no es válido. Asegúrese de introducir un valor válido conforme a las propiedades de hora y fecha del entorno local actual. (BMXAA4155E)",
+		6:"El valor introducido {0} no es válido. Especifique un valor entero válido. (BMXAA7094E)",
+		7:"El valor introducido {0} no es válido. Especifique un valor entero válido. (BMXAA7094E)",
+		19:"El valor introducido {0} no es válido. Especifique un valor entero válido. (BMXAA7094E)",
+		8:"El valor introducido {0} no es válido. Especifique un valor decimal válido. (BMXAA7095E)",
+		9:"El valor introducido {0} no es válido. Especifique un valor decimal válido. (BMXAA7095E)",
+		10:"{0} no es una duración válida. No pueden utilizarse a la vez el separador de tiempo y el decimal. Introduzca un valor de tiempo en HH:MM o un valor decimal. (BMXAA4145E)",
+		11:"{0} no es un número. Introduzca un valor numérico. (BMXAA4141E)",
+		"length":"El valor especificado {0} supera la longitud de campo máxima {1}. Introduzca un valor que encaje en la longitud de este atributo. (BMXAA4049E)",
+		"decimaltoolong":"Ha especificado más dígitos antes del separador decimal de lo que se permite en el campo. (BMXAA4081E)",
+		"domainvalidation":"{0} no es válido. (BMXAA8284E)"
+	};
+	//TODO - Move some of these cached into WCR?
+	function buildRegexArray()
+	{
+		var DATE_REGEX = new RegExp(/^((3[01]|0[1-9]|[1-2]?[0-9])([\s\.\/\-:]*((enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?|(3[01]|0[1-9]|[1-2]?[0-9])([\s\.\/\-:]*(1[012]|0[1-9]|[0-9]))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?|((enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic))([\s\.\/\-:]*(3[01]|0[1-9]|[1-2]?[0-9]))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?)([\.]?)$/i);
+		var DATETIME_REGEX = new RegExp(/^((3[01]|0[1-9]|[1-2]?[0-9])([\s\.\/\-:]*((enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?|(3[01]|0[1-9]|[1-2]?[0-9])([\s\.\/\-:]*(1[012]|0[1-9]|[0-9]))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?|((enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic))([\s\.\/\-:]*(3[01]|0[1-9]|[1-2]?[0-9]))?([\s\.\/\-:]*(\d{4}|\d{2}|\d{1}))?)([\.]?)\s([2][0-4]|0[0-9]|[01]?[0-9])(:([0-5][0-9]|[0-9])?)?(:([0-5][0-9]|[0-9])?)?(\sA[.]?M[.]?|\sP[.]?M[.]?|\sa[.]?m[.]?|\sp[.]?m[.]?)?$/i);
+		var TIME_REGEX = new RegExp(/^([2][0-4]|0[0-9]|[01]?[0-9])(:([0-5][0-9]|[0-9])?)?(:([0-5][0-9]|[0-9])?)?(\sA[.]?M[.]?|\sP[.]?M[.]?|\sa[.]?m[.]?|\sp[.]?m[.]?)?$/i);
+		var INTEGER_REGEX = new RegExp(/^[-+]?\d+(\.?\d{3})*[-+]?$/);
+		var DECIMAL_REGEX = new RegExp(/(^[-+]?\d{1,3}(\.?\d{3})*(,\d*)?[-+]?$)|(^[-+]?,\d+$)/);
+		var DURATION_REGEX = new RegExp(/(^[-+]?[\d\.]*:?[\d\.]*[-+]?$)/);
+		return {
+			3:[INTEGER_REGEX,DATE_REGEX],
+			4:[INTEGER_REGEX,DATE_REGEX,DATETIME_REGEX],
+			5:[INTEGER_REGEX,TIME_REGEX,DECIMAL_REGEX],
+			6:[INTEGER_REGEX],
+			7:[INTEGER_REGEX],
+			19:[INTEGER_REGEX],
+			8:[INTEGER_REGEX,DECIMAL_REGEX],
+			9:[INTEGER_REGEX,DECIMAL_REGEX],
+			10:[DECIMAL_REGEX,DURATION_REGEX],
+			11:[INTEGER_REGEX,DECIMAL_REGEX]
+		};
+	}
+	var DATA_TYPE_REGEX = buildRegexArray();
+</script>
+	<script type="text/javascript">
+		var DeferRun = false;
+		function deferred(){
+			if(DeferRun){
+				return;
+			}
+			DeferRun = true;
+			//The following is for Web Replay/tbx
+			callWebReplayFrame();
+		replaceAllItems();
+	
+			resetLogoutTimer(true);
+		processLoadMethods();
+		fixSpacers();
+		
+		document.body.style.cursor="";
+	
+		
+		bindEventsArray(document,eventBindObjects,false);
+		hideWait();
+		killAjaxTimeout();
+		working=false;
+		window.setTimeout("showingPopup=false",100);
+		sizeCanvas();
+		}
+		document.body.onload=deferred;
+		window.onload=deferred;
+		window.setTimeout(function(){deferred()}, 100);
+	</script>
+
+<script>
+	window.onbeforeunload = promptSessionLeave;
+
+		menus.createMenuCache({"goto":{"id":"menu0","mxevent":"changeapp","items":[{"id":"gotoMenuHome","text":"Centro de inicio","mxevent":"changeapp","image":"modimg_startcenter.gif","eventvalue":"startcntr"},{"id":"ASSET_MODULE","sub":{"id":"1","mxevent":"changeapp","items":[{"id":"LOCATION_APP","text":"Ubicaciones","eventvalue":"LOCATION","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Activos","image":"modimg_asset.gif","border":true},{"id":"RELEASE_MODULE","sub":{"id":"2","mxevent":"changeapp","items":[{"id":"PMCHGFSCGA_APP","text":"Cambiar planificaci\u00f3n","eventvalue":"PMCHGFSCGA","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Actualizaci\u00f3n","image":"modimg_release.gif"},{"id":"SETUP_MODULE","sub":{"id":"3","mxevent":"changeapp","items":[{"id":"CALENDR_APP","text":"Calendarios","eventvalue":"CALENDR","apptype":"RUN"},{"id":"MOD10041_HEADER","sub":{"id":"MOD10041_HEADER4","mxevent":"changeapp","items":[{"id":"LABOR_APP","text":"Mano de obra","eventvalue":"LABOR","apptype":"RUN"},{"id":"PERSON_APP","text":"Personas","eventvalue":"PERSON","apptype":"RUN"},{"id":"PERSONGR_APP","text":"Grupos de personas","eventvalue":"PERSONGR","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Recursos"},{"id":"BBOARD_APP","text":"Tabl\u00f3n de anuncios","eventvalue":"BBOARD","apptype":"RUN"},{"id":"ASSETCAT_APP","text":"Clasificaciones","eventvalue":"ASSETCAT","apptype":"RUN"},{"id":"FUNC_TRN_APP","text":"Funcion Turnos Claro","eventvalue":"FUNC_TRN","apptype":"RUN"},{"id":"DIS_TRN_CLARO_APP","text":"Disponibilidad turnos Claro","eventvalue":"DIS_TRN_CLARO","apptype":"RUN"},{"id":"EMR_APP","text":"Administraci\u00f3n Est\u00e1ndares de Marcaci\u00f3n de Red","eventvalue":"EMR","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Administraci\u00f3n","image":"modimg_setup.gif"},{"id":"SSDR_MODULE","sub":{"id":"5","mxevent":"changeapp","items":[{"id":"MOD10965_HEADER","sub":{"id":"MOD10965_HEADER6","mxevent":"changeapp","items":[{"id":"PMSCOFFCAT_APP","text":"Cat\u00e1logo de ofertas","eventvalue":"PMSCOFFCAT","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Solicitudes de cat\u00e1logo"},{"id":"MOD10970_HEADER","sub":{"id":"MOD10970_HEADER7","mxevent":"changeapp","items":[{"id":"VIEWTMPL_APP","text":"Ver plantillas","eventvalue":"VIEWTMPL","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Solicitudes de escritorio"},{"id":"MOD10980_HEADER","sub":{"id":"MOD10980_HEADER8","mxevent":"changeapp","items":[{"id":"CREATESR_APP","text":"Crear solicitud de servicio","eventvalue":"CREATESR","apptype":"RUN"},{"id":"VIEWSR_APP","text":"Ver solicitudes de servicio","eventvalue":"VIEWSR","apptype":"RUN"},{"id":"SEARCHSOL_APP","text":"Buscar soluciones","eventvalue":"SEARCHSOL","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Solicitudes de servicio"},{"id":"SRMSEARCH_APP","text":"B\u00fasqueda global de autoservicio","eventvalue":"SRMSEARCH","apptype":"RUN"},{"id":"SRMSSCTR_APP","text":"Centro de autoservicio","eventvalue":"SRMSSCTR","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Auto-servicio","image":"modimg_ssdr.gif"},{"id":"CHANGE_MODULE","sub":{"id":"9","mxevent":"changeapp","items":[{"id":"CHANGE_APP","text":"Cambios","eventvalue":"CHANGE","apptype":"RUN"},{"id":"PMCHGFSCGA_APP","text":"Cambiar planificaci\u00f3n","eventvalue":"PMCHGFSCGA","apptype":"RUN"},{"id":"PMCHGWDOW_APP","text":"Calendarios de Ventana de cambio","eventvalue":"PMCHGWDOW","apptype":"RUN"},{"id":"PMCHGBO_APP","text":"Per\u00edodos de inactividad","eventvalue":"PMCHGBO","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"AUDITCHGTAS_APP","text":"Auditor\u00eda de Tareas de Cambios","eventvalue":"AUDITCHGTAS","apptype":"RUN"},{"id":"CHCOMITE_APP","text":"Comit\u00e9 de cambios","eventvalue":"CHCOMITE","apptype":"RUN"},{"id":"AUDITCHG_APP","text":"Auditor\u00eda de Cambios","eventvalue":"AUDITCHG","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Cambio","image":"modimg_change.gif"},{"id":"SERVCAT_MODULE","sub":{"id":"10","mxevent":"changeapp","items":[{"id":"PMSCOFFCAT_APP","text":"Cat\u00e1logo de ofertas","eventvalue":"PMSCOFFCAT","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Cat\u00e1logo de solicitud de servicio","image":"modimg_serviceReqestMgr.gif"},{"id":"TM_MODULE","sub":{"id":"11","mxevent":"changeapp","items":[{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Gesti\u00f3n de tareas","image":"modimg_taskMgmt.gif"},{"id":"CI_MODULE","sub":{"id":"12","mxevent":"changeapp","items":[{"id":"CI_APP","text":"Art\u00edculos de configuraci\u00f3n","eventvalue":"CI","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"CIAPN_APP","text":"Administrador de APN","eventvalue":"CIAPN","apptype":"RUN"},{"id":"SOLDEDCI_APP","text":"Soluciones dedicadas","eventvalue":"SOLDEDCI","apptype":"RUN"},{"id":"PUNTOCENTRAL_APP","text":"Reportes de empresas y negocios","eventvalue":"PUNTOCENTRAL","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Infraestructura de TI","image":"modimg_configItems.gif"},{"id":"INT_MODULE","sub":{"id":"13","mxevent":"changeapp","items":[{"id":"EXTSYSTEM_APP","text":"Sistemas externos","eventvalue":"EXTSYSTEM","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Integraci\u00f3n","image":"modimg_int.gif"},{"id":"WO_MODULE","sub":{"id":"14","mxevent":"changeapp","items":[{"id":"WOTRACK_APP","text":"Seguimiento de \u00f3rdenes de trabajo","eventvalue":"WOTRACK","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"CL_PRUEBA_APP","text":"Gestion De Pruebas","eventvalue":"CL_PRUEBA","apptype":"RUN"},{"id":"RISKG_HEADER","sub":{"id":"RISKG_HEADER15","mxevent":"changeapp","items":[{"id":"RISKGESTIO_APP","text":"Gestion de riesgos","eventvalue":"RISKGESTIO","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Gesti\u00f3n riesgos"},{"id":"INSLISTASOT_APP","text":"Recepci\u00f3n de Infraestructura","eventvalue":"INSLISTASOT","apptype":"RUN"},{"id":"PROY_CLARO_MW_APP","text":"Recepci\u00f3n Microondas y SAT","eventvalue":"PROY_CLARO_MW","apptype":"RUN"},{"id":"RISKPRUEBAS_APP","text":"Gesti\u00f3n de riesgos (pruebas soporte)","eventvalue":"RISKPRUEBAS","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"\u00d3rdenes de trabajo","image":"modimg_wo.gif"},{"id":"PLANS_MODULE","sub":{"id":"16","mxevent":"changeapp","items":[{"id":"JOBPLAN_APP","text":"Planes de trabajo","eventvalue":"JOBPLAN","apptype":"RUN"},{"id":"PLANTRATA_APP","text":"Plan tratamiento riesgos","eventvalue":"PLANTRATA","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Plan","image":"modimg_plans.gif"},{"id":"SECURITY_MODULE","sub":{"id":"17","mxevent":"changeapp","items":[{"id":"USER_APP","text":"Usuarios","eventvalue":"USER","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Seguridad","image":"modimg_security.gif"},{"id":"SD_MODULE","sub":{"id":"18","mxevent":"changeapp","items":[{"id":"INCIDENT_APP","text":"Incidencias Claro","eventvalue":"INCIDENT","apptype":"RUN"},{"id":"ACTIVITY_APP","text":"Actividades y tareas","eventvalue":"ACTIVITY","apptype":"RUN"},{"id":"PMCOMSR_APP","text":"Solicitudes de proceso","eventvalue":"PMCOMSR","apptype":"RUN"},{"id":"SR_APP","text":"Solicitudes de servicio","eventvalue":"SR","apptype":"RUN"},{"id":"SOLUTION_APP","text":"Soluciones","eventvalue":"SOLUTION","apptype":"RUN"},{"id":"CL_INC_CRI_APP","text":"Gestion Comunicados","eventvalue":"CL_INC_CRI","apptype":"RUN"},{"id":"CL_COMUN_APP","text":"Comunicados","eventvalue":"CL_COMUN","apptype":"RUN"},{"id":"INCTAREAS_APP","text":"Tareas incidentes Claro","eventvalue":"INCTAREAS","apptype":"RUN"},{"id":"INCRECRELATED_APP","text":"Incidentes con registros relacionados","eventvalue":"INCRECRELATED","apptype":"RUN"},{"id":"CTA_USR_APP","text":"Cuentas de usuario","eventvalue":"CTA_USR","apptype":"RUN"},{"id":"CHG_SOLUTION_APP","text":"Acciones de mejora Cambios","eventvalue":"CHG_SOLUTION","apptype":"RUN"}],"type":1,"openat":"southwest"},"text":"Servicio de atenci\u00f3n al usuario","image":"modimg_sd.gif"}],"type":1,"openat":"southwest"},"profile":{"id":"menu0","items":[{"id":"DEFAULT_OPTION","text":"Informaci\u00f3n predeterminada","mxevent":"DEFAULT","image":"menu_icon_defaultinfo.gif"},{"id":"PERSONAL_OPTION","text":"Informaci\u00f3n personal","mxevent":"PERSONAL","image":"menu_icon_personalinfo.gif"}],"type":6,"openat":"southwest"}});
+
+
+
+		loadDomains(TABLEDOMAINLIST);
+
+</script>
+</html>
